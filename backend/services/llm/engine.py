@@ -68,9 +68,9 @@ class OllamaLLMEngine:
                     },
                     "format": "json",  # Request JSON format if Ollama supports this
                     "stop": ["\n\n", "```"],  # Stop sequences to prevent extra content
-                    "timeout": 120  # 2-minute timeout
+                    "timeout": 295  # 2-minute timeout
                 },
-                timeout=180  # Request timeout (3 minutes)
+                timeout=300  # Request timeout (3 minutes)
             )
             response.raise_for_status()
 

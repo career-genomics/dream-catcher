@@ -1,10 +1,11 @@
-from fastapi import APIRouter, UploadFile, File, HTTPException, Depends
-from pydantic import BaseModel
-from typing import Dict, List, Optional
 import io
-from backend.services.llm.engine import OllamaLLMEngine
+from typing import List, Optional
 import PyPDF2
 from docx import Document
+from fastapi import APIRouter, UploadFile, File, HTTPException
+from pydantic import BaseModel, Field
+
+from backend.services.llm.engine import OllamaLLMEngine
 
 router = APIRouter()
 
@@ -17,7 +18,7 @@ llm_engine = OllamaLLMEngine()
 
 
 class JobDescription(BaseModel):
-    content: str
+    content: str = Field(description="Description of the job that we would like to compare with.")
 
 
 class Experience(BaseModel):

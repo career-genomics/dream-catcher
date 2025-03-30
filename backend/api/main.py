@@ -18,8 +18,7 @@ app.add_middleware(
 async def health_check():
     """Health check endpoint to verify API is running."""
     return {
-        "status": "healthy",
-        "service": "resume-matcher-api"
+        "status": "up",
     }
 
 # Include routers
