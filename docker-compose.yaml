@@ -1,0 +1,20 @@
+services:
+  api:
+    image: career-genomics-api:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - OLLAMA_HOST=http://host.docker.internal:11434
+
+  ui:
+    image: career-genomics-ui:latest
+    ports:
+        - "3000:3000"
+    environment:
+        - REACT_APP_API_URL=http://localhost:8080
+    depends_on:
+      - api
+#    volumes:
+#      - ./frontend:/app
+#      - /app/node_modules
+    command: npm run start -- --host 0.0.0.0
